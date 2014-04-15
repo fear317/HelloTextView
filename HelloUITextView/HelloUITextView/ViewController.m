@@ -65,6 +65,8 @@
     RiepilogoPaymentViewController *paymentVC = [[RiepilogoPaymentViewController alloc] initWithNibName:@"RiepilogoPaymentViewController" bundle:nil];
     UINavigationController *navigationController = self.navigationController;
     [navigationController pushViewController:paymentVC animated:YES];
+    
+    NSLog(@"tap this cell.index=%d",indexPath.row);
 }
 
 // returns nil if cell is not visible or index path is out of range
@@ -103,9 +105,11 @@
     }
     return nil;
 }
+
 - (void)handleSwipeToRight:(id)sender {
-    NSLog(@"swipe from right");
+    NSLog(@"swipe--->");
 }
+
 /*
  recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFromLeft:)];
  [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
@@ -121,6 +125,14 @@
  [recognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
  [[self view] addGestureRecognizer:recognizer];
  [recognizer release];
+ */
+/*
+ //单指单击
+ UITapGestureRecognizer *singleFingerOne = [[UITapGestureRecognizer alloc] initWithTarget:self
+ action:@selector(handleSingleFingerEvent:)];
+ singleFingerOne.numberOfTouchesRequired = 1; //手指数
+ singleFingerOne.numberOfTapsRequired = 1; //tap次数
+ singleFingerOne.delegate = self;
  */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 100;
