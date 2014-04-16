@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MyTVCell.h"
 #import "RiepilogoPaymentViewController.h"
+#import "LeoBlock.h"
 
 @interface ViewController ()
 
@@ -51,6 +52,7 @@
     }
     [self.view addSubview:self.titleView];
     
+    [self testBlock];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +61,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)testBlock {
+    LeoBlock* block = [[LeoBlock alloc] init];
+    [block practise];
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSLog(@"didSelectRowAtIndexPath");
     
