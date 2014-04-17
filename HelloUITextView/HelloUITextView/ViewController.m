@@ -10,6 +10,7 @@
 #import "MyTVCell.h"
 #import "RiepilogoPaymentViewController.h"
 #import "LeoBlock.h"
+#import "LeoBook.h"
 
 @interface ViewController ()
 
@@ -53,6 +54,7 @@
     [self.view addSubview:self.titleView];
     
     [self testBlock];
+    [self testArchive];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +63,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)testArchive {
+    LeoBook *book = [[LeoBook alloc] init];
+    book.name = @"三毛流浪记";
+    book.author = @"三毛";
+    book.numOfPage = [[NSNumber alloc] initWithInt:123];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *fileName = [documentsDirectory stringByAppendingString:@"LeoBook"];
+    
+    LeoBook *sameBook = [NSKeyedUnarchiver unarchiveObjectWithFile:fileName];
+    if (sameBook) {
+        NSLog(@"book name = @%@, author=%@, pages=%d",sameBook.name,sameBook.author,[sameBook.numOfPage intValue]);
+    }else {
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+//        NSString *fileName = [documentsDirectory stringByAppendingString:@"LeoBook"];
+      BOOL  isSuccess = [NSKeyedArchiver archiveRootObject:book toFile:fileName];
+        if (isSuccess) {
+            NSLog(@" LeoBook is saved to file named LeoBook");
+        }else {
+            NSLog(@" Save LeoBook failed!!!");
+        }
+    }
+}
 - (void)testBlock {
     LeoBlock* block = [[LeoBlock alloc] init];
     [block practise];
