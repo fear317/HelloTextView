@@ -42,7 +42,7 @@
     
     [queue addOperation:operation];
 
-//    [queue addOperation:operation2];
+//    [queue addOperation:operation2]; //this is ok
     [operation2 start];
 }
 @end
