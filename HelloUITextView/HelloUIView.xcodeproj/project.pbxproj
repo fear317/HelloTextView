@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EE50AEA518FE343B005E1C6C /* LeoBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50AEA318FE343B005E1C6C /* LeoBlock.m */; };
 		EE50AEA918FFA070005E1C6C /* LeoBook.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50AEA818FFA070005E1C6C /* LeoBook.m */; };
+		EE50AEB118FFBE82005E1C6C /* LeoPractiseThread.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50AEB018FFBE82005E1C6C /* LeoPractiseThread.m */; };
+		EE50AEB418FFCC4C005E1C6C /* LeoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE50AEB318FFCC4C005E1C6C /* LeoOperation.m */; };
 		EE945B7B1872BE1000A14386 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE945B7A1872BE1000A14386 /* Foundation.framework */; };
 		EE945B7D1872BE1000A14386 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE945B7C1872BE1000A14386 /* CoreGraphics.framework */; };
 		EE945B7F1872BE1000A14386 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE945B7E1872BE1000A14386 /* UIKit.framework */; };
@@ -51,6 +53,10 @@
 		EE50AEA418FE343B005E1C6C /* LeoBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeoBlock.h; sourceTree = "<group>"; };
 		EE50AEA718FFA070005E1C6C /* LeoBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeoBook.h; sourceTree = "<group>"; };
 		EE50AEA818FFA070005E1C6C /* LeoBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeoBook.m; sourceTree = "<group>"; };
+		EE50AEAF18FFBE82005E1C6C /* LeoPractiseThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeoPractiseThread.h; sourceTree = "<group>"; };
+		EE50AEB018FFBE82005E1C6C /* LeoPractiseThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeoPractiseThread.m; sourceTree = "<group>"; };
+		EE50AEB218FFCC4C005E1C6C /* LeoOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeoOperation.h; sourceTree = "<group>"; };
+		EE50AEB318FFCC4C005E1C6C /* LeoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeoOperation.m; sourceTree = "<group>"; };
 		EE945B771872BE1000A14386 /* HelloUIView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloUIView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE945B7A1872BE1000A14386 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EE945B7C1872BE1000A14386 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +134,17 @@
 			name = Archive;
 			sourceTree = "<group>";
 		};
+		EE50AEAE18FFBE30005E1C6C /* Threads */ = {
+			isa = PBXGroup;
+			children = (
+				EE50AEAF18FFBE82005E1C6C /* LeoPractiseThread.h */,
+				EE50AEB018FFBE82005E1C6C /* LeoPractiseThread.m */,
+				EE50AEB218FFCC4C005E1C6C /* LeoOperation.h */,
+				EE50AEB318FFCC4C005E1C6C /* LeoOperation.m */,
+			);
+			name = Threads;
+			sourceTree = "<group>";
+		};
 		EE945B6E1872BE1000A14386 = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +178,7 @@
 		EE945B801872BE1000A14386 /* HelloUITextView */ = {
 			isa = PBXGroup;
 			children = (
+				EE50AEAE18FFBE30005E1C6C /* Threads */,
 				EE50AEA618FFA028005E1C6C /* Archive */,
 				EE50AEA218FE3427005E1C6C /* Block */,
 				EEF89BE21887D453003363DD /* image */,
@@ -332,6 +350,8 @@
 			files = (
 				EE945B941872BE1000A14386 /* ViewController.m in Sources */,
 				EE945BB41872C2ED00A14386 /* MyTVCell.m in Sources */,
+				EE50AEB418FFCC4C005E1C6C /* LeoOperation.m in Sources */,
+				EE50AEB118FFBE82005E1C6C /* LeoPractiseThread.m in Sources */,
 				EE50AEA518FE343B005E1C6C /* LeoBlock.m in Sources */,
 				EEF89BE01887CC95003363DD /* PageScrollViewController.m in Sources */,
 				EE945B8B1872BE1000A14386 /* AppDelegate.m in Sources */,

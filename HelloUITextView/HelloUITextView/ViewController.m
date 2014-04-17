@@ -11,6 +11,7 @@
 #import "RiepilogoPaymentViewController.h"
 #import "LeoBlock.h"
 #import "LeoBook.h"
+#import "LeoPractiseThread.h"
 
 @interface ViewController ()
 
@@ -55,6 +56,7 @@
     
     [self testBlock];
     [self testArchive];
+    [self testThread];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,18 +64,21 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)testThread {
+    LeoPractiseThread * pt = [[LeoPractiseThread alloc] init];
+    [pt practiseThread];
+}
 - (void)testArchive {
-    LeoBook *book = [[LeoBook alloc] init];
-    book.name = @"三毛流浪记";
-    book.author = @"三毛";
+    LeoBook *book  = [[LeoBook alloc] init];
+    book.name      = @"三毛流浪记";
+    book.author    = @"三毛";
     book.numOfPage = [[NSNumber alloc] initWithInt:123];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths               = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *fileName = [documentsDirectory stringByAppendingString:@"LeoBook"];
+    NSString *fileName           = [documentsDirectory stringByAppendingString:@"LeoBook"];
     
-    LeoBook *sameBook = [NSKeyedUnarchiver unarchiveObjectWithFile:fileName];
+    LeoBook *sameBook            = [NSKeyedUnarchiver unarchiveObjectWithFile:fileName];
     if (sameBook) {
         NSLog(@"book name = @%@, author=%@, pages=%d",sameBook.name,sameBook.author,[sameBook.numOfPage intValue]);
     }else {
