@@ -12,15 +12,16 @@
 @implementation LeoPractiseThread
 
 -(void)practiseThread {
-    [self practiseThread1:@"thread1"];
-    [self practiseThread2:@"thread2"];
-    [self practiseThread3];
+    [self practiseWithThread:@"thread1"];
+    [self practiseWithAndSelectorThread:@"thread2"];
+    [self practiseWithNSOperation];
+    [self practiseWithDispatch];
 }
--(void)practiseThread1:(NSString*)name {
+-(void)practiseWithThread:(NSString*)name {
     
-    [NSThread detachNewThreadSelector:@selector(practiseThread2:) toTarget:self withObject:name];
+    [NSThread detachNewThreadSelector:@selector(practiseWithAndSelectorThread:) toTarget:self withObject:name];
 }
--(void)practiseThread2:(NSString*)name {
+-(void)practiseWithAndSelectorThread:(NSString*)name {
 //    NSAutoreleasePool *pool = nil;
     NSThread *myThread = [[NSThread alloc] initWithTarget:self selector:@selector(doSomething:) object:name];
     [myThread start];
@@ -34,15 +35,49 @@
 -(void)doSomething:(NSString *)name {
     NSLog(@"fruit fruit fruit fruit fruit=%@",name);
 }
--(void)practiseThread3 {
+-(void)practiseWithNSOperation {
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     LeoOperation *operation = [[LeoOperation alloc] init];
-    NSInvocationOperation *operation2 = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doSomething:) object:@"thread3"];
 //    [operation2 performSelector:@selector(doSomething:) withObject:@"thread3"];
     
     [queue addOperation:operation];
 
-//    [queue addOperation:operation2]; //this is ok
+
+    NSInvocationOperation *operation2 = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doSomething:) object:@"thread3"];
+    
+    //    [queue addOperation:operation2]; //this is ok
     [operation2 start];
+}
+
+-(void)practiseWithDispatch {
+    dispatch_queue_t myQueue;
+    
+    myQueue = dispatch_queue_create("MyQueue", NULL);
+    
+    dispatch_async(myQueue, ^{
+        
+        printf("Do some work here in despatch_queue.\n");
+        dispatch_async(myQueue, ^{
+            
+            printf("work is done1 here in despatch_queue.\n");
+
+//            dispatch_apply(6,myQueue, ^(size_t i){
+//                NSInteger index = (NSInteger)i;
+//                printf("%d do some work here in despatch_queue.\n",index);
+//                
+//            });
+            printf("work is done2 here in despatch_queue.\n");
+
+        });
+        
+    });
+    
+    dispatch_apply(6,myQueue, ^(size_t i){
+        NSInteger index = (NSInteger)i;
+        printf("%d do some work here in despatch_queue.\n",index);
+        
+    });
+    
+//    dispatch_release(myQueue);
 }
 @end

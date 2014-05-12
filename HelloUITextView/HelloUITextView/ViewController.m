@@ -12,6 +12,7 @@
 #import "LeoBlock.h"
 #import "LeoBook.h"
 #import "LeoPractiseThread.h"
+#import "LeoAnimationViewController.h"
 
 @interface ViewController ()
 
@@ -57,12 +58,28 @@
     [self testBlock];
     [self testArchive];
     [self testThread];
+    [self testStringOperation];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)testStringOperation {
+    
+    NSString* str = @"j";
+    
+    NSLog(@"%@",[self testUpupercaseFirstLetter:str]);
+}
+-(NSString*)testUpupercaseFirstLetter:(NSString*)source {
+    if (!source) {
+        return nil;
+    }
+    NSString* temp = source;
+    NSString* firstLetter = [temp substringToIndex:1];
+    firstLetter = [firstLetter uppercaseStringWithLocale:[NSLocale currentLocale]];
+    return [NSString stringWithFormat:@"%@%@",firstLetter,[temp substringFromIndex:1]];
 }
 - (void)testThread {
     LeoPractiseThread * pt = [[LeoPractiseThread alloc] init];
@@ -99,12 +116,20 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSLog(@"didSelectRowAtIndexPath");
-    
+    if (indexPath.row == 2) {
+        LeoAnimationViewController* animation = [[LeoAnimationViewController alloc] initWithNibName:@"LeoAnimationViewController" bundle:nil];
+        if (animation) {
+            UINavigationController *navigationController = self.navigationController;
+            [navigationController pushViewController:animation animated:YES];
+            return;
+        }
+    }
     RiepilogoPaymentViewController *paymentVC = [[RiepilogoPaymentViewController alloc] initWithNibName:@"RiepilogoPaymentViewController" bundle:nil];
     UINavigationController *navigationController = self.navigationController;
     [navigationController pushViewController:paymentVC animated:YES];
     
     NSLog(@"tap this cell.index=%d",indexPath.row);
+    
 }
 
 // returns nil if cell is not visible or index path is out of range
