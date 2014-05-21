@@ -37,8 +37,48 @@
     [self.pageSVC addImages:arr];
     [self.view addSubview:self.pageSVC.view];
     
+    
+    ///
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"changeBackgroundColorByNotification" object:nil];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(changeBackgroundColorByNotification:) name:@"changeBackgroundColorByNotification" object:nil];
+    
+    
+   NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(threadForNotification) object:nil];
+    [thread start];
+    
+}
+-(void)threadForNotification
+{
+    self.view.backgroundColor = [UIColor blackColor];
+
+    NSInvocationOperation *operation2 = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(changeBackgroundColor:) object:nil];
+    
+    [NSThread sleepForTimeInterval:3];
+
+    [operation2 start];
+    
+}
+-(void)changeBackgroundColor:(UIColor*)color
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeBackgroundColorByNotification" object:[UIColor redColor]];
+}
+-(void)changeBackgroundColorByNotification:(NSNotification*)notification
+{
+ UIColor *color = (UIColor*)[notification object];//获取到传递的对象
+    self.view.backgroundColor = color;
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (self.deletage) {
+        ViewController *vc = (ViewController*)self.deletage;
+        [vc newColor:[UIColor purpleColor]];
+    }
+    
+    
+    [super viewWillDisappear:animated];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

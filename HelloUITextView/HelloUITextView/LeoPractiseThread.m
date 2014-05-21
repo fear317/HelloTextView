@@ -38,8 +38,6 @@
 -(void)practiseWithNSOperation {
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     LeoOperation *operation = [[LeoOperation alloc] init];
-//    [operation2 performSelector:@selector(doSomething:) withObject:@"thread3"];
-    
     [queue addOperation:operation];
 
 

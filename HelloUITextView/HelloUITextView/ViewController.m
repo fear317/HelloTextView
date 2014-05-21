@@ -125,6 +125,7 @@
         }
     }
     RiepilogoPaymentViewController *paymentVC = [[RiepilogoPaymentViewController alloc] initWithNibName:@"RiepilogoPaymentViewController" bundle:nil];
+    paymentVC.deletage = self;
     UINavigationController *navigationController = self.navigationController;
     [navigationController pushViewController:paymentVC animated:YES];
     
@@ -241,5 +242,7 @@
     }
     
 }
-
+-(void)newColor:(UIColor *)newColor {
+    [self.titleView setBackgroundColor:newColor];
+}
 @end

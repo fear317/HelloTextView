@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PageScrollViewController.h"
+#import "RiepilogoPaymentViewController.h"
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UIScrollViewDelegate>{
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, UIScrollViewDelegate,SendInformationDelegate>{
     CGFloat    _prevContentOffsetY;
     CGFloat    _prevTitleViewLayoutY;
     CGFloat    _prevLastContentOffsetY;
@@ -19,4 +21,5 @@
 
 @property (retain,nonatomic) UITableView *tableView;
 @property (retain,nonatomic) UIView* titleView;
+-(void)newColor:(UIColor *)newColor;
 @end

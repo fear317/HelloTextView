@@ -19,6 +19,12 @@
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nc;
 //    [self.window addSubview:nc.view];
+    
+    
+//    NSString *temp = [NSString stringWithFormat:@"HelloGitapp:message=%@",@"123"];
+//    NSURL *url = [NSURL URLWithString:temp];
+//    [[UIApplication sharedApplication] openURL:url];
+    
     return YES;
 }
 							
@@ -49,4 +55,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return YES;
+}
 @end

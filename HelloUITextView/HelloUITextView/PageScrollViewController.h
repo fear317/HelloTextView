@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SendInformationDelegate<NSObject>
+@required
+-(void) newColor:(UIColor *)newColor;
+@end
+
 @interface PageScrollViewController : UIViewController<UIScrollViewDelegate>
 {
     int currentPage;

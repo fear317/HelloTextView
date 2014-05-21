@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PageScrollViewController.h"
+#import "ViewController.h"
 
 @interface RiepilogoPaymentViewController : UIViewController
 
 @property (nonatomic,retain) PageScrollViewController* pageSVC;
+@property (nonatomic,strong) id<SendInformationDelegate> deletage;
 @end
