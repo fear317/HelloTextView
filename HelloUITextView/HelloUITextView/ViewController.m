@@ -13,6 +13,7 @@
 #import "LeoBook.h"
 #import "LeoPractiseThread.h"
 #import "LeoAnimationViewController.h"
+#import "LEOLabyrinth.h"
 
 @interface ViewController ()
 
@@ -59,12 +60,17 @@
     [self testArchive];
     [self testThread];
     [self testStringOperation];
+    [self testLabyrinth];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)testLabyrinth{
+    LEOLabyrinth *lb = [[LEOLabyrinth alloc] init];
+    [lb printMyWay:lb.mapArr];
 }
 -(void)testStringOperation {
     

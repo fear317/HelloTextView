@@ -41,7 +41,7 @@
     ///
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"changeBackgroundColorByNotification" object:nil];
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(changeBackgroundColorByNotification:) name:@"changeBackgroundColorByNotification" object:nil];
-    
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(changeBackgroundColorByNotification2:) name:@"changeBackgroundColorByNotification" object:nil];
     
    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(threadForNotification) object:nil];
     [thread start];
@@ -67,7 +67,11 @@
  UIColor *color = (UIColor*)[notification object];//获取到传递的对象
     self.view.backgroundColor = color;
 }
-
+-(void)changeBackgroundColorByNotification2:(NSNotification*)notification
+{
+//    UIColor *color = (UIColor*)[notification object];//获取到传递的对象
+    self.view.backgroundColor = [UIColor greenColor];
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     if (self.deletage) {
